@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
   
 
-const Navbar = () => {
+const NavBar = () => {
     let location = useLocation();
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -32,4 +32,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default NavBar
