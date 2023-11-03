@@ -4,38 +4,49 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-import Navbar from './components/navbar';
+import Navbar from './components/NavBar';
+
 import { Home } from './components/Home';
 import About from './components/About';
 import NoteState from './context/notes/NoteState';
-import { Alert } from './components/Alert';
+import  Alert  from './components/Alert';
 import Signup from './components/Signup';
 import Login from './components/Login';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 function App() {
-  const[showAlert,setShowAlert]=useState(1);
-  setTimeout(() => {
-    setShowAlert(0)
-  }, 10000);
+  
+  const [alert,setAlert]=useState(null);
+  const showAlert=(message,type)=>{
+    setAlert({
+      msg: message,
+      type:type
+    })
+    setTimeout(()=>{
+      setAlert(null);
+    },1500)
+  }
+  useEffect(()=>{
+      localStorage.removeItem('token')
+  },[])
   return (
     <>
     <Router>
       <NoteState>
           <Navbar />
-           {showAlert? <Alert message="add your own mongoURI to make it work on your device in backend/db.js" />:'' }
+          <Alert alert={alert}></Alert>
           <div className="container">
             <Routes>
            
-              <Route exact path="/" element={<Home/>}>
+              <Route exact path="/" element={<Home showAlert={showAlert} />}>
               
               </Route>
               <Route exact path="/about" element={<About/>}>
               
               </Route>
-              <Route exact path="/login" element={<Login/>}>
+              <Route exact path="/login" element={<Login showAlert={showAlert}/>}>
               
               </Route>
-              <Route exact path="/signup" element={<Signup/>}>
+              <Route exact path="/signup" element={<Signup showAlert={showAlert}/>}>
                
               </Route>
         
