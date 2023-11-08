@@ -16,9 +16,7 @@ const Notes = (props) => {
       else{
         navigate('/login')
       }
-      
-        
-        console.log('hello')
+         console.log('hello')
         // eslint-disable-next-line
     }, )
     const ref = useRef(null)
