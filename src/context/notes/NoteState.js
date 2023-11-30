@@ -2,7 +2,7 @@ import NoteContext from "./noteContext";
 import { useState } from "react";
 
 const NoteState = (props) => {
-  const host = "http://localhost:5000"
+  const host = "https://my-notebook-pink.vercel.app/"
   const notesInitial = []
   const [notes, setNotes] = useState(notesInitial)
 
@@ -19,7 +19,7 @@ const NoteState = (props) => {
     const json = await response.json() 
     setNotes(json)
   }
-
+ 
   // Add a Note
   const addNote = async (title, description, tag,authtoken) => {
     // TODO: API Call
