@@ -11,7 +11,7 @@ const Signup = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch("https://my-notebook-pink.vercel.app/api/auth/createuser", {
+        const response = await fetch("https://mynotebook-plbp.onrender.com/api/auth/createuser", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
